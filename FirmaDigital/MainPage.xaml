@@ -1,9 +1,27 @@
 ﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:FirmaDigital"
+             xmlns:sf="clr-namespace:Syncfusion.Maui.SignaturePad;assembly=Syncfusion.Maui.SignaturePad"
              x:Class="FirmaDigital.MainPage"
              BackgroundColor="White">
-    <StackLayout>
-      
+    <StackLayout x:Name="stackLayout">
+        <!-- Vista de firma -->
+        <sf:SfSignaturePad x:Name="signaturePad"
+                           WidthRequest="300"
+                           HeightRequest="200"
+                           BackgroundColor="LightGray"
+                           DrawCompleted="OnSignatureDrawCompleted" />
+        <!-- Entrada de nombre -->
+        <Entry x:Name="nameEntry"
+               Placeholder="Nombre"
+               Margin="10" />
+        <!-- Entrada de descripción -->
+        <Entry x:Name="descriptionEntry"
+               Placeholder="Descripción"
+               Margin="10" />
+        <!-- Botón para guardar firma -->
+        <Button Text="Guardar Firma"
+                Clicked="OnSaveClicked"
+                Margin="10" />
     </StackLayout>
 </ContentPage>
