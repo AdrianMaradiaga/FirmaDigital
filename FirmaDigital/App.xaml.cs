@@ -1,16 +1,17 @@
 ﻿using FirmaDigital.Controllers;
+using System;
+using System.IO;
+
 
 namespace FirmaDigital
 {
     public partial class App : Application
     {
-#pragma warning disable CS0649 // Field 'App._database' is never assigned to, and will always have its default value null
         static Database _database;
-#pragma warning restore CS0649 // Field 'App._database' is never assigned to, and will always have its default value null
+
         public App()
         {
             InitializeComponent();
-
             MainPage = new NavigationPage(new MainPage());
         }
 
@@ -18,9 +19,10 @@ namespace FirmaDigital
         {
             get
             {
-                if( _database == null)
+                if (_database == null)
                 {
                     string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Firmas.db3");
+                    _database = new Database(dbPath);
                 }
                 return _database;
             }

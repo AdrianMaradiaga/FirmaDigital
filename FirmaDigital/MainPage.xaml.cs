@@ -29,8 +29,16 @@ namespace FirmaDigital
                 signatureBytes = ms.ToArray();  
             }
 
-            var previewImage = new Image { Source = ImageSource.FromStream(() => new MemoryStream(signatureBytes))};
+            var previewImage = new Image
+            {
+                Source = ImageSource.FromStream(() => new MemoryStream(signatureBytes)),
+                WidthRequest = 100,
+                HeightRequest = 100 
+            };
+            stackLayout.Children.Clear();
+
             stackLayout.Children.Add(previewImage);
+
         }
 
         private async void OnSaveClicked(object sender, EventArgs e)
